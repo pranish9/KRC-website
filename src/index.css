@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-bg text-body font-sans antialiased; }
+  h1, h2, h3, h4 { @apply text-navy font-extrabold tracking-tight; }
+}
+
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-24; }
+  .eyebrow { @apply inline-flex items-center gap-2 rounded-full bg-brand-soft px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-navy; }
+  .eyebrow-dark { @apply inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand; }
+  .card { @apply rounded-3xl bg-white shadow-[0_10px_40px_-20px_rgba(10,26,51,.25)]; }
+  .input { @apply w-full rounded-2xl border border-line bg-white px-4 py-3.5 text-navy placeholder:text-muted outline-none transition focus:border-navy focus:ring-4 focus:ring-brand/30; }
+  .label { @apply mb-2 block text-sm font-semibold text-navy; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-4 py-2 text-sm font-semibold text-navy transition hover:border-navy; }
+  .chip-active { @apply border-navy bg-navy text-white; }
+  .prose-krc p { @apply mb-4 leading-relaxed; }
+  .prose-krc h2 { @apply mb-3 mt-8 text-2xl; }
+  .prose-krc h3 { @apply mb-2 mt-6 text-xl; }
+  .prose-krc ul { @apply mb-4 list-disc space-y-1 pl-6; }
+}
+
+.fade-in { animation: fadeIn .6s ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }

@@ -1,0 +1,95 @@
+import { useEffect, useState } from 'react'
+import { ChevronLeft, ChevronRight, ShieldCheck, Clock } from 'lucide-react'
+import { Button, Img } from './ui'
+import { IMG, PERSON } from '../data/images'
+import { SITE } from '../data/site'
+
+const slides = [
+  {
+    eyebrow: 'Electrical Engineering · Since 2009',
+    title: <>Powering Nepal’s homes, businesses &amp; <span className="text-brand">industries.</span></>,
+    text: 'Design, installation, repair and maintenance by licensed engineers — with a technician ready 24/7.',
+    image: IMG.hardhatInstall,
+  },
+  {
+    eyebrow: 'Panels · DBs · Changeovers',
+    title: <>Safe, tidy panels built to <span className="text-brand">last for decades.</span></>,
+    text: 'From a single home DB to 400 A industrial panels, we build to code and hand over full drawings.',
+    image: IMG.controlPanel,
+  },
+  {
+    eyebrow: 'Lighting · CCTV · Products',
+    title: <>Light it beautifully. <span className="text-brand">Watch it securely.</span></>,
+    text: 'Lighting design for restaurants and hotels, plus CCTV and genuine electrical products with warranty.',
+    image: IMG.vintageBulbs,
+  },
+]
+
+export default function HeroSlider() {
+  const [i, setI] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const n = slides.length
+
+  useEffect(() => {
+    if (paused) return
+    const t = setTimeout(() => setI((i + 1) % n), 6000)
+    return () => clearTimeout(t)
+  }, [i, paused, n])
+
+  const s = slides[i]
+  return (
+    <section className="container-site pt-6" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <div className="relative overflow-hidden rounded-[36px] bg-navy">
+        {slides.map((sl, k) => (
+          <Img key={k} src={sl.image} alt="" className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ${k === i ? 'opacity-100' : 'opacity-0'}`} />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/20" />
+
+        <div className="relative grid min-h-[620px] gap-10 px-6 pb-28 pt-14 md:px-14 md:py-20 lg:grid-cols-12">
+          <div key={i} className="fade-in flex flex-col justify-center lg:col-span-7">
+            <span className="eyebrow-dark w-fit">{s.eyebrow}</span>
+            <h1 className="mt-6 text-[40px] leading-[1.05] text-white md:text-6xl lg:text-7xl">{s.title}</h1>
+            <p className="mt-6 max-w-xl text-lg text-white/75">{s.text}</p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Button to="/book">Book a site visit</Button>
+              <Button href={SITE.hotlineHref} variant="ghostLight" icon="phone">Call 24/7</Button>
+            </div>
+            <div className="mt-10 flex items-center gap-4">
+              <div className="flex -space-x-3">
+                {[0, 1, 2, 3].map((k) => <img key={k} src={PERSON} alt="" className="h-11 w-11 rounded-full object-cover ring-4 ring-navy" />)}
+              </div>
+              <div className="text-sm text-white/80">
+                <span className="font-extrabold text-white">850+ projects</span> trusted by homes,<br className="hidden sm:block" /> restaurants, banks &amp; hospitals
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden flex-col justify-end gap-4 lg:col-span-5 lg:flex lg:items-end">
+            <div className="w-72 rounded-3xl bg-white/10 p-5 text-white backdrop-blur-md ring-1 ring-white/20">
+              <div className="flex items-center gap-3">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-brand text-navy"><Clock size={20} /></span>
+                <div><p className="text-2xl font-extrabold">40 min</p><p className="text-xs text-white/70">Average emergency arrival</p></div>
+              </div>
+            </div>
+            <div className="w-72 rounded-3xl bg-white p-5">
+              <div className="flex items-center gap-3">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-ok/10 text-ok"><ShieldCheck size={20} /></span>
+                <div><p className="text-2xl font-extrabold text-navy">12-month</p><p className="text-xs">Workmanship warranty</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-6 right-6 flex items-center gap-3 md:bottom-10 md:right-10">
+          <div className="mr-2 hidden gap-1.5 sm:flex">
+            {slides.map((_, k) => (
+              <button key={k} onClick={() => setI(k)} aria-label={`Slide ${k + 1}`} className={`h-2 rounded-full transition-all ${k === i ? 'w-8 bg-brand' : 'w-2 bg-white/40'}`} />
+            ))}
+          </div>
+          <button onClick={() => setI((i - 1 + n) % n)} className="grid h-12 w-12 place-items-center rounded-full bg-white/15 text-white backdrop-blur hover:bg-white hover:text-navy" aria-label="Previous slide"><ChevronLeft /></button>
+          <button onClick={() => setI((i + 1) % n)} className="grid h-12 w-12 place-items-center rounded-full bg-brand text-navy hover:bg-white" aria-label="Next slide"><ChevronRight /></button>
+        </div>
+      </div>
+    </section>
+  )
+}
