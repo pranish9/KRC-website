@@ -140,6 +140,7 @@ export function Contact() {
         <div className="container-site mt-10">
           <div className="overflow-hidden rounded-[32px] bg-white p-3">
             <iframe title="KRC location map" src={SITE.mapEmbed} className="h-[420px] w-full rounded-[24px]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            <a href={SITE.mapLink} target="_blank" rel="noreferrer" className="mt-3 flex items-center justify-center gap-2 rounded-2xl bg-bg p-3 font-bold text-navy hover:bg-brand-soft"><MapPin size={18} /> Open in Google Maps</a>
           </div>
         </div>
       </section>

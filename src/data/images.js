@@ -1,3 +1,5 @@
+import { asset } from '../lib/asset'
+
 // Photo library.
 // These are free-to-use Unsplash photos used until KRC's own project photos are ready.
 // To use your own photo: put the file in /public/images/... and use its path, e.g. '/images/projects/089-1.jpg'.
@@ -40,5 +42,5 @@ export const IMG = {
 }
 
 // People photos (the founder's photo is used for every person until staff photos are ready)
-export const PERSON = '/images/jinesh-face.jpg'
-export const CEO = '/images/jinesh.jpg'
+export const PERSON = asset('images/jinesh-face.jpg')
+export const CEO = asset('images/jinesh.jpg')

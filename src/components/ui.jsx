@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { ArrowUpRight, Phone, Star } from 'lucide-react'
 import { SITE } from '../data/site'
+import { asset } from '../lib/asset'
 
 const styles = {
   primary: 'bg-brand text-navy hover:bg-[#ffd54f]',
@@ -58,8 +59,10 @@ export function Img({ src, alt = '', className = '', ...rest }) {
   const [err, setErr] = useState(false)
   if (err || !src)
     return (
-      <div className={`grid place-items-center bg-gradient-to-br from-navy to-navy-2 ${className}`} role="img" aria-label={alt}>
-        <img src="/images/logo-white.png" alt="" className="w-1/3 max-w-[140px] opacity-30" />
+      <div className={`relative flex flex-col items-center justify-center gap-3 overflow-hidden bg-gradient-to-br from-navy to-navy-2 p-4 text-center ${className}`} role="img" aria-label={alt}>
+        <span className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(#FFC727_1px,transparent_1px),linear-gradient(90deg,#FFC727_1px,transparent_1px)] [background-size:28px_28px]" />
+        <img src={asset('images/logo-white.png')} alt="" className="relative w-1/4 max-w-[110px] opacity-40" />
+        {alt && <span className="relative max-w-[90%] text-xs font-semibold text-white/50">{alt}</span>}
       </div>
     )
   return <img src={src} alt={alt} loading="lazy" decoding="async" onError={() => setErr(true)} className={`object-cover ${className}`} {...rest} />

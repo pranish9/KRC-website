@@ -5,6 +5,7 @@ import { getIcon } from './icons'
 import { NAV, SITE } from '../data/site'
 import { services } from '../data/services'
 import { Button } from './ui'
+import { asset } from '../lib/asset'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -47,7 +48,7 @@ export default function Navbar() {
       <nav className={`border-b border-line/60 bg-white/95 backdrop-blur transition-shadow ${scrolled ? 'shadow-[0_8px_30px_-12px_rgba(10,26,51,.18)]' : ''}`}>
         <div className="container-site flex h-[76px] items-center justify-between gap-4">
           <Link to="/" className="flex shrink-0 items-center gap-3" aria-label="Kathmandu Repairing Center home">
-            <img src="/images/logo.png" alt="KRC logo" className="h-11 w-auto" />
+            <img src={asset('images/logo.png')} alt="KRC logo" className="h-11 w-auto" />
             <span className="hidden leading-tight sm:block">
               <span className="block text-[15px] font-extrabold text-navy">Kathmandu Repairing</span>
               <span className="block text-xs font-semibold tracking-wide text-body">Center Pvt. Ltd.</span>
@@ -126,7 +127,7 @@ export default function Navbar() {
           <div className="absolute inset-0 bg-navy/60" onClick={() => setOpen(false)} />
           <div className="fade-in absolute right-0 top-0 flex h-full w-[86%] max-w-sm flex-col overflow-y-auto bg-white p-6">
             <div className="mb-6 flex items-center justify-between">
-              <img src="/images/logo.png" alt="KRC" className="h-10" />
+              <img src={asset('images/logo.png')} alt="KRC" className="h-10" />
               <button onClick={() => setOpen(false)} className="grid h-10 w-10 place-items-center rounded-full bg-bg" aria-label="Close menu"><X size={20} /></button>
             </div>
             <ul className="space-y-1">

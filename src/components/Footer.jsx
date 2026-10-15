@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, ArrowUpRight } from 'lucide-react'
 import { SITE } from '../data/site'
 import { services } from '../data/services'
+import { asset } from '../lib/asset'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -22,7 +23,7 @@ export default function Footer() {
 
         <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <img src="/images/logo-white.png" alt="KRC" className="h-14 w-auto" />
+            <img src={asset('images/logo-white.png')} alt="KRC" className="h-14 w-auto" />
             <p className="mt-5 max-w-sm leading-relaxed">
               {SITE.name} — electrical engineering consulting, execution and product sales in Lalitpur since {SITE.founded}.
             </p>
