@@ -9,13 +9,43 @@ Home · About · Team · Services · Service detail ×6 · Projects · Project r
 Technicians · Technician profile ×4 · Book a technician ×4 · Book a site visit · Enquiry · Contact · Emergency 24/7 ·
 Testimonials · FAQ · Blog · Blog post ×3 · Search · Privacy · Terms · Sitemap · Thank you · Booking confirmed · 404
 
-## Run locally
+## Getting started
+
+### Requirements
+
+- Node.js 18 or newer
+- npm (included with Node.js)
+
+### Install and start the development server
 
 ```bash
+git clone <repository-url>
+cd krc-website
 npm install
-npm run dev        # http://localhost:5173
-npm run build      # production build in /dist
+npm run dev
 ```
+
+Open the local URL printed by Vite (usually `http://localhost:5173`). The dev server supports hot reload while you edit the site.
+
+### Production build
+
+```bash
+npm run build
+npm run preview
+```
+
+The production-ready site is generated in `dist/`. `npm run preview` serves that build locally so you can check it before deployment.
+
+### Optional form delivery setup
+
+Forms work without configuration by opening the visitor's email app with the message ready to send. To deliver submissions through Web3Forms instead:
+
+1. Get a free access key at https://web3forms.com using the company email.
+2. Copy `.env.example` to `.env` in the project root.
+3. Set `VITE_WEB3FORMS_KEY` in `.env` to the key.
+4. Restart the dev server or rebuild the site for the change to take effect.
+
+Do not commit `.env`; add the same variable to your hosting provider's environment settings for production.
 
 ## Edit content (no coding needed)
 
@@ -38,20 +68,14 @@ All text, prices and photos are in `src/data/`:
 
 Stock photos load from Unsplash for now. To keep copies on your own site, run `npm run images:download` once.
 
-## Forms → company email
-
-1. Get a free access key at https://web3forms.com (use the company email).
-2. Create `.env` with `VITE_WEB3FORMS_KEY=your-key`, or add it in Cloudflare Pages → Settings → Environment variables.
-3. Rebuild. Without a key, forms open the visitor's email app instead.
-
-Forms include a hidden honeypot field that stops spam bots.
+Forms include a hidden honeypot field that helps stop spam bots.
 
 ## Deploy on Cloudflare Pages (free, secure)
 
 1. Push this repo to GitHub.
 2. Go to Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git → select this repo.
 3. Use these settings: framework preset **Vite**, build command `npm run build`, output directory `dist`.
-4. Add the `VITE_WEB3FORMS_KEY` environment variable, then deploy.
+4. If using Web3Forms, add `VITE_WEB3FORMS_KEY` in the Pages environment variables, then deploy.
 5. Under Custom domains, add `krc.com.np` once the domain is registered (free for Nepali companies at register.com.np).
 
 `public/_redirects` handles page refreshes, and `public/_headers` adds security headers. Netlify reads the same two files.
