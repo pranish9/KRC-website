@@ -11,16 +11,17 @@ export const testimonials = [
 
 // Clients shown in "Trusted by businesses" on the home page.
 // To show a logo: put the file in /public/images/clients/ (SVG or transparent PNG works best)
-// and set `logo`, e.g. logo: 'images/clients/caltex.svg'. Without a logo the name is shown.
+// and set `logo`, e.g. logo: 'images/clients/caltex.svg'. Without a logo a monogram is shown.
+// `project` is the slug of the KRC project record the logo links to.
 export const clients = [
-  { name: 'Caltex', logo: null },
-  { name: 'Trisara', logo: null },
-  { name: 'Buddha Bar', logo: null },
-  { name: 'City Hospital', logo: null },
-  { name: 'ABC Company', logo: null },
-  { name: 'XYZ Company', logo: null },
-  { name: 'Hotel Thamel', logo: null },
-  { name: 'Banquet Hall', logo: null },
+  { name: 'Caltex', logo: null, project: 'caltex-station-canopy-lighting' },
+  { name: 'Trisara', logo: null, project: 'trisara-restaurant-wiring' },
+  { name: 'Buddha Bar', logo: null, project: 'buddha-bar-fit-out' },
+  { name: 'City Hospital', logo: null, project: 'city-hospital-standby-power' },
+  { name: 'ABC Company', logo: null, project: 'abc-company-dc-panel-setup' },
+  { name: 'XYZ Company', logo: null, project: 'xyz-company-headquarters' },
+  { name: 'Hotel Thamel', logo: null, project: 'boutique-hotel-facade-lighting' },
+  { name: 'Banquet Hall', logo: null, project: 'banquet-hall-lighting-db' },
 ]
 
 export const faqs = [

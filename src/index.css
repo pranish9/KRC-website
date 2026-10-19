@@ -30,5 +30,17 @@
 @media (prefers-reduced-motion: reduce) { .fade-in { animation: none; } html { scroll-behavior: auto; } }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+/* Client logo marquee (ClientLogos.jsx): two identical lists slide left by one list's width. */
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 40s linear infinite; }
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track,
+.marquee[data-paused] .marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee { mask-image: none; }
+  .marquee-track { animation: none; width: auto; justify-content: center; padding: 0 1rem; }
+  .marquee-track > ul:first-child { flex-wrap: wrap; justify-content: center; padding-right: 0; }
+  .marquee-dup, .marquee-toggle { display: none; }
+}
 .fade-in { animation: fadeIn .6s ease both; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
