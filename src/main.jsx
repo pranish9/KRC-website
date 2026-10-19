@@ -8,12 +8,18 @@ import './index.css'
 // Hash routing is used only for the preview build (hosts without page-refresh rewrites).
 const Router = import.meta.env.VITE_HASH_ROUTER === '1' ? HashRouter : BrowserRouter
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const app = (
   <React.StrictMode>
     <HelmetProvider>
       <Router>
         <App />
       </Router>
     </HelmetProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
+
+// Prerendered pages (see scripts/prerender.mjs) already contain the HTML: attach to it.
+// Anything else (dev server, app.html fallback, hash-router preview) renders from scratch.
+const root = document.getElementById('root')
+if (root.hasChildNodes() && Router === BrowserRouter) ReactDOM.hydrateRoot(root, app)
+else ReactDOM.createRoot(root).render(app)

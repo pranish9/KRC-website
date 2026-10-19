@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Search as SearchIcon, Calendar, Clock } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import { Seo, Img, Button, Stars, SectionHead } from '../components/ui'
+import { Seo, Img, Button, Stars, SectionHead, JsonLd } from '../components/ui'
 import { TestimonialCard, BlogCard } from '../components/Cards'
 import FaqItem from '../components/FaqItem'
 import { CtaBand, NotFoundInline } from '../components/Layout'
@@ -43,6 +43,13 @@ export function Faq() {
   return (
     <>
       <Seo title="FAQ" description="Answers to common questions about KRC services, pricing, warranty and products." />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+        }}
+      />
       <PageHero eyebrow="FAQ" title="Frequently asked questions" crumbs={[{ label: 'FAQ' }]} />
       <section className="section">
         <div className="container-site mx-auto max-w-3xl">

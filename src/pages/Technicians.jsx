@@ -4,7 +4,7 @@ import { Star, BadgeCheck, MapPin, Briefcase, Languages, Award, Clock, CheckCirc
 import PageHero from '../components/PageHero'
 import { Seo, Img, Button, Stars } from '../components/ui'
 import { TechCard } from '../components/Cards'
-import { Field, SmartForm } from '../components/Form'
+import { Field, SmartForm, useToday } from '../components/Form'
 import { CtaBand, NotFoundInline } from '../components/Layout'
 import { technicians, getTechnician } from '../data/team'
 import { testimonials } from '../data/content'
@@ -106,10 +106,10 @@ export function TechnicianProfile() {
 }
 
 const slots = ['10:00 AM', '11:30 AM', '1:00 PM', '2:30 PM', '4:00 PM']
-const today = () => new Date().toISOString().slice(0, 10)
 
 export function BookTechnician() {
   const { slug } = useParams()
+  const today = useToday()
   const t = getTechnician(slug)
   const [slot, setSlot] = useState(slots[0])
   if (!t) return <NotFoundInline what="technician" back="/technicians" />
@@ -124,7 +124,7 @@ export function BookTechnician() {
             <input type="hidden" name="time" value={slot} />
             <h2 className="text-2xl">1. Choose date &amp; time</h2>
             <div className="mt-5 grid gap-5 md:grid-cols-2">
-              <Field label="Date" name="date" type="date" required min={today()} defaultValue={today()} />
+              <Field label="Date" name="date" type="date" required key={today} min={today || undefined} defaultValue={today} />
               <div>
                 <span className="label">Time slot</span>
                 <div className="flex flex-wrap gap-2">

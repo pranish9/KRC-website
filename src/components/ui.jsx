@@ -107,6 +107,15 @@ export function Stars({ value = 5, size = 16 }) {
   )
 }
 
+// schema.org structured data for search engines and AI tools.
+export function JsonLd({ data }) {
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(data).replace(/</g, '\\u003c')}</script>
+    </Helmet>
+  )
+}
+
 const DEFAULT_DESCRIPTION = 'Electrical design, installation, repair, CCTV and products in Lalitpur. Licensed engineers and a 24/7 emergency line.'
 
 // Same address the build used for index.html, sitemap and robots.txt (see vite.config.js).

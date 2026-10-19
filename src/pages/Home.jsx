@@ -25,7 +25,7 @@ export default function Home() {
       <section className="container-site py-10">
         <p className="mb-5 text-center text-sm font-bold uppercase tracking-wider text-muted">Trusted by businesses across the valley</p>
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10 sm:gap-y-4">
-          {clients.map((c) => <span key={c} className="text-base font-extrabold sm:text-xl text-navy/30">{c}</span>)}
+          {clients.map((c) => <span key={c} className="text-base font-extrabold text-navy/55 sm:text-xl">{c}</span>)}
         </div>
       </section>
 
@@ -117,7 +117,7 @@ export default function Home() {
               ['04', 'Work & hand-over', 'Neat work, testing report and warranty.'],
             ].map(([n, t, d]) => (
               <div key={n} className="group rounded-[28px] bg-bg p-7 transition hover:bg-navy">
-                <p className="text-5xl font-extrabold text-brand">{n}</p>
+                <p className="text-5xl font-extrabold text-navy transition group-hover:text-brand">{n}</p>
                 <h3 className="mt-6 text-xl group-hover:text-white">{t}</h3>
                 <p className="mt-2 group-hover:text-white/70">{d}</p>
               </div>

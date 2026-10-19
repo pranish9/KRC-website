@@ -1,34 +1,10 @@
-import fs from 'node:fs'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { SITE } from './src/data/site.js'
-
-// Address the site is served from. On Vercel this is the production domain (the .vercel.app
-// address, or your own domain once it is added in Vercel), so share previews always point
-// at a live URL. Elsewhere it falls back to SITE.url.
-const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : SITE.url
-
-const STATIC_ROUTES = [
-  '/', '/about', '/team', '/services', '/projects', '/products', '/technicians', '/book', '/enquiry',
-  '/contact', '/emergency', '/testimonials', '/faq', '/blog', '/privacy', '/terms', '/sitemap',
-]
-
-// Detail pages, read from the slugs in the data files so new entries appear automatically.
-const DETAIL_ROUTES = [
-  ['services', 'src/data/services.js'],
-  ['projects', 'src/data/projects.js'],
-  ['products', 'src/data/products.js'],
-  ['technicians', 'src/data/team.js'],
-  ['blog', 'src/data/content.js'],
-]
-
-const slugsIn = (file) => [...fs.readFileSync(file, 'utf8').matchAll(/\bslug:\s*'([^']+)'/g)].map((m) => m[1])
+import { SITE_URL, sitemapPaths } from './scripts/site-paths.mjs'
 
 function sitemapXml() {
-  const paths = [...STATIC_ROUTES, ...DETAIL_ROUTES.flatMap(([base, file]) => slugsIn(file).map((s) => `/${base}/${s}`))]
-  const urls = paths.map((p) => `  <url><loc>${SITE_URL}${p === '/' ? '/' : p}</loc></url>`).join('\n')
+  const urls = sitemapPaths().map((p) => `  <url><loc>${SITE_URL}${p === '/' ? '/' : p}</loc></url>`).join('\n')
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
 }
 
@@ -84,6 +60,8 @@ function seoFiles() {
 
 export default defineConfig({
   plugins: [react(), seoFiles()],
+  // The prerender build runs in Node, where this CommonJS package must be bundled to import cleanly.
+  ssr: { noExternal: ['react-helmet-async'] },
   // Lets the app build absolute share-image URLs for the same address.
   define: { 'import.meta.env.VITE_SITE_URL': JSON.stringify(SITE_URL) },
 })

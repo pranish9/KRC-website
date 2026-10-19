@@ -2,14 +2,27 @@ import { SITE } from '../data/site'
 
 const KEY = import.meta.env.VITE_WEB3FORMS_KEY
 
+// Fields used only for spam checks; never sent.
+const TRAP_FIELDS = ['botcheck', 'krc_hp']
+const MIN_FILL_MS = 3000 // people take longer than this to fill a form; bots don't
+const MAX_LINKS = 2
+
+// True when a submission looks automated. Bots are told it worked so they don't retry.
+export function looksLikeSpam(data, openedAt) {
+  if (TRAP_FIELDS.some((k) => data[k])) return true
+  if (openedAt && Date.now() - openedAt < MIN_FILL_MS) return true
+  const links = Object.values(data).join(' ').match(/https?:\/\/|www\./gi) || []
+  return links.length > MAX_LINKS
+}
+
 // Sends a form to the company email.
 // With a Web3Forms key (free) the message is delivered silently.
 // Without a key, the visitor's email app opens with the details filled in.
-export async function submitForm(subject, data) {
-  if (data.botcheck) return { ok: true } // honeypot: bots fill hidden fields
+export async function submitForm(subject, data, { openedAt } = {}) {
+  if (looksLikeSpam(data, openedAt)) return { ok: true, spam: true }
 
   const clean = Object.fromEntries(
-    Object.entries(data).filter(([k, v]) => k !== 'botcheck' && v !== '' && v != null),
+    Object.entries(data).filter(([k, v]) => !TRAP_FIELDS.includes(k) && v !== '' && v != null),
   )
 
   if (KEY) {

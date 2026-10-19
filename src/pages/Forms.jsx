@@ -2,13 +2,12 @@ import { useSearchParams, Link, useLocation } from 'react-router-dom'
 import { Phone, Mail, MapPin, Clock, CheckCircle2, CalendarCheck, AlertTriangle, Power, Users, Flame, PhoneCall } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Seo, Button, Img, SIZES } from '../components/ui'
-import { Field, SmartForm } from '../components/Form'
+import { Field, SmartForm, useToday } from '../components/Form'
 import { services, getService } from '../data/services'
 import { products, getProduct, npr } from '../data/products'
 import { SITE } from '../data/site'
 import { IMG } from '../data/images'
 
-const today = () => new Date().toISOString().slice(0, 10)
 
 function ContactAside() {
   return (
@@ -76,6 +75,7 @@ export function Enquiry() {
 
 export function Book() {
   const [sp] = useSearchParams()
+  const today = useToday()
   const service = getService(sp.get('service') || '')
   return (
     <>
@@ -88,7 +88,7 @@ export function Book() {
             <div className="mt-5 grid gap-5 md:grid-cols-2">
               <Field label="Service needed" name="service" required options={services.map((s) => s.title)} defaultValue={service?.title} />
               <Field label="Property type" name="property" required options={['House / apartment', 'Shop / office', 'Restaurant / hotel', 'Factory / industry', 'Hospital / school', 'Other']} />
-              <Field label="Preferred date" name="date" type="date" required min={today()} defaultValue={today()} />
+              <Field label="Preferred date" name="date" type="date" required key={today} min={today || undefined} defaultValue={today} />
               <Field label="Preferred time" name="time" options={['Morning (10–12)', 'Afternoon (12–3)', 'Late afternoon (3–5)']} defaultValue="Morning (10–12)" />
               <Field className="md:col-span-2" label="Describe the work" name="message" rows={4} placeholder="e.g. New 3-storey house, need complete wiring design and quotation" />
             </div>
@@ -158,11 +158,11 @@ export function Emergency() {
           <div className="relative max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">● Available 24 hours · 7 days</span>
             <h1 className="mt-5 text-4xl leading-tight text-white md:text-6xl">Electrical emergency? Call now.</h1>
-            <p className="mt-4 text-xl text-white/85">Average arrival inside the valley: about 40 minutes.</p>
+            <p className="mt-4 text-xl text-white">Average arrival inside the valley: about 40 minutes.</p>
             <a href={SITE.hotlineHref} className="mt-8 inline-flex items-center gap-4 rounded-full bg-white py-2 pl-8 pr-2 text-2xl font-extrabold text-danger md:text-3xl">
               {SITE.hotline}<span className="grid h-14 w-14 place-items-center rounded-full bg-danger text-white"><PhoneCall /></span>
             </a>
-            <p className="mt-4 text-white/80">Or call the office: <a href={SITE.officeHref} className="font-bold underline">{SITE.office}</a></p>
+            <p className="mt-4 text-white">Or call the office: <a href={SITE.officeHref} className="font-bold underline">{SITE.office}</a></p>
           </div>
         </div>
       </section>
