@@ -1,6 +1,8 @@
 export const SITE = {
   name: 'Kathmandu Repairing Center Pvt. Ltd.',
   short: 'KRC',
+  // Public address of the live site. Used for the sitemap, share previews and Google listing data.
+  url: 'https://krc.com.np',
   tagline: 'Electrical engineering you can count on — day or night.',
   founder: 'Jinesh Raj Tuladhar',
   founded: 2009,

@@ -78,15 +78,17 @@ export function Stars({ value = 5, size = 16 }) {
   )
 }
 
-export function Seo({ title, description, image }) {
+const DEFAULT_DESCRIPTION = 'Electrical design, installation, repair, CCTV and products in Lalitpur. Licensed engineers and a 24/7 emergency line.'
+
+export function Seo({ title, description = DEFAULT_DESCRIPTION, image }) {
   const t = title ? `${title} | Kathmandu Repairing Center` : `${SITE.name} | Electrical Engineering, Lalitpur`
   return (
     <Helmet>
       <title>{t}</title>
-      {description && <meta name="description" content={description} />}
+      <meta name="description" content={description} />
       <meta property="og:title" content={t} />
-      {description && <meta property="og:description" content={description} />}
-      {image && <meta property="og:image" content={image} />}
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image || `${SITE.url}/images/og-image.png`} />
       <meta property="og:type" content="website" />
     </Helmet>
   )
