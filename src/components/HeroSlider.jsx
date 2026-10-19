@@ -34,6 +34,8 @@ export default function HeroSlider() {
   const [focused, setFocused] = useState(false)
   // Only slides that have been (or are about to be) shown load their photo.
   const [seen, setSeen] = useState(() => new Set([0]))
+  // The first slide shows straight away; only later slide changes fade in.
+  const [moved, setMoved] = useState(false)
   const n = slides.length
 
   useEffect(() => {
@@ -47,12 +49,16 @@ export default function HeroSlider() {
 
   useEffect(() => {
     if (stopped || hovered || focused) return
-    const t = setTimeout(() => setI((i + 1) % n), 6000)
+    const t = setTimeout(() => {
+      setMoved(true)
+      setI((i + 1) % n)
+    }, 6000)
     return () => clearTimeout(t)
   }, [i, stopped, hovered, focused, n])
 
   const go = (k) => {
     setStopped(true)
+    setMoved(true)
     setSeen((prev) => new Set(prev).add(k))
     setI(k)
   }
@@ -77,7 +83,7 @@ export default function HeroSlider() {
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/20" />
 
         <div className="relative grid min-h-[560px] gap-10 px-5 pb-28 pt-10 sm:px-8 sm:pt-14 md:min-h-[620px] md:px-14 md:py-20 lg:grid-cols-12">
-          <div key={i} className="fade-in flex flex-col justify-center lg:col-span-7" role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${n}`} aria-live={stopped ? 'polite' : 'off'}>
+          <div key={i} className={`${moved ? 'fade-in ' : ''}flex flex-col justify-center lg:col-span-7`} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${n}`} aria-live={stopped ? 'polite' : 'off'}>
             <span className="eyebrow-dark w-fit">{s.eyebrow}</span>
             <h1 className="mt-6 text-[34px] leading-[1.08] text-white sm:text-5xl md:text-6xl xl:text-7xl">{s.title}</h1>
             <p className="mt-5 max-w-xl text-base text-white/75 sm:mt-6 sm:text-lg">{s.text}</p>
