@@ -15,7 +15,7 @@ export default function Footer() {
             <p className="text-sm font-bold uppercase tracking-wider text-brand">Power problem right now?</p>
             <h3 className="mt-2 text-2xl text-white sm:text-3xl md:text-4xl">We answer 24 hours, 7 days a week.</h3>
           </div>
-          <a href={SITE.hotlineHref} className="group inline-flex items-center gap-4 rounded-full bg-brand py-2 pl-6 pr-2 text-base font-extrabold sm:pl-7 sm:text-lg text-navy">
+          <a href={SITE.hotlineHref} className="group inline-flex shrink-0 items-center gap-4 whitespace-nowrap rounded-full bg-brand py-2 pl-6 pr-2 text-base font-extrabold sm:pl-7 sm:text-lg text-navy">
             {SITE.hotline}
             <span className="grid h-12 w-12 place-items-center rounded-full bg-navy text-brand transition group-hover:rotate-12"><Phone size={20} /></span>
           </a>

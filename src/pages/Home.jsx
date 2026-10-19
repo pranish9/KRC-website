@@ -50,7 +50,7 @@ export default function Home() {
             <p className="mt-5 text-lg">
               Kathmandu Repairing Center Pvt. Ltd. is an electrical engineering consulting, execution and product sales company in Gusingal, Lalitpur. We design, install and maintain electrical systems for homes, businesses and industries — and we pick up the phone at 2 AM too.
             </p>
-            <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               {['Licensed electrical engineers', 'Genuine branded materials', 'Written quotation, no surprises', '12-month workmanship warranty', 'Project records kept for you', '24/7 emergency response'].map((t) => (
                 <li key={t} className="flex items-center gap-2.5 font-semibold text-navy"><CheckCircle2 size={20} className="shrink-0 text-ok" /> {t}</li>
               ))}
@@ -96,13 +96,11 @@ export default function Home() {
       <section className="section pt-4">
         <div className="container-site">
           <SectionHead eyebrow="Our work" title="Recent projects, each with its own record" text="Every project keeps its photos, specs, documents and warranty online — for the client’s future reference." action={<Button to="/projects" variant="outline">All projects</Button>} />
-          <div className="grid gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-7"><ProjectCard p={projects[0]} large /></div>
-            <div className="grid gap-6 lg:col-span-5">
-              <ProjectCard p={projects[1]} />
-            </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-12">
+            <div className="md:col-span-2 lg:col-span-7"><ProjectCard p={projects[0]} large /></div>
+            <div className="lg:col-span-5"><ProjectCard p={projects[1]} /></div>
             <div className="lg:col-span-5"><ProjectCard p={projects[2]} /></div>
-            <div className="lg:col-span-7"><ProjectCard p={projects[3]} /></div>
+            <div className="md:col-span-2 lg:col-span-7"><ProjectCard p={projects[3]} /></div>
           </div>
         </div>
       </section>

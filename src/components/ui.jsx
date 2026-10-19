@@ -23,7 +23,7 @@ const chip = {
 // Pill button with a round icon chip, as in the v5 design.
 export function Button({ to, href, onClick, type = 'button', variant = 'primary', icon = 'arrow', children, className = '', disabled, ...rest }) {
   const Icon = icon === 'phone' ? Phone : icon === 'arrow' ? ArrowUpRight : null
-  const cls = `group inline-flex items-center justify-center gap-3 rounded-full py-2 font-bold transition-all duration-200 disabled:opacity-60 ${
+  const cls = `group inline-flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-full py-2 font-bold transition-all duration-200 disabled:opacity-60 ${
     Icon ? 'pl-6 pr-2' : 'px-7 py-3.5'
   } ${styles[variant]} ${className}`
   const inner = (

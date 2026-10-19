@@ -85,7 +85,7 @@ export function ServiceDetail() {
           </div>
 
           <aside className="space-y-6 lg:col-span-4">
-            <div className="sticky top-28 space-y-6">
+            <div className="grid gap-6 md:grid-cols-2 lg:sticky lg:top-28 lg:grid-cols-1">
               <div className="card p-7">
                 <span className="grid h-14 w-14 place-items-center rounded-2xl bg-brand text-navy"><Ico /></span>
                 <p className="mt-5 text-sm font-bold uppercase tracking-wider text-muted">Starting price</p>

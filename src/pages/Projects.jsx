@@ -150,7 +150,7 @@ export function ProjectDetail() {
               )}
             </div>
 
-            <aside className="space-y-6 lg:col-span-4">
+            <aside className="grid content-start gap-6 md:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
               <div className="card p-7">
                 <h3 className="text-xl">Technical specifications</h3>
                 <dl className="mt-4 divide-y divide-line">

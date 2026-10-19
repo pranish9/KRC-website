@@ -44,10 +44,10 @@ export default function About() {
             [Eye, 'Vision', 'To be Nepal’s most trusted name for electrical engineering and after-sales service.'],
             [HeartHandshake, 'Promise', 'Clear prices, quality materials, tidy work and support long after hand-over.'],
           ].map(([I, t, d]) => (
-            <div key={t} className="rounded-[28px] bg-bg p-8">
+            <div key={t} className="rounded-[28px] bg-bg p-6 lg:p-8">
               <span className="grid h-14 w-14 place-items-center rounded-2xl bg-brand text-navy"><I /></span>
-              <h3 className="mt-6 text-2xl">{t}</h3>
-              <p className="mt-2 text-lg">{d}</p>
+              <h3 className="mt-6 text-xl lg:text-2xl">{t}</h3>
+              <p className="mt-2 lg:text-lg">{d}</p>
             </div>
           ))}
         </div>
@@ -56,11 +56,11 @@ export default function About() {
       {/* CEO message */}
       <section className="section">
         <div className="container-site">
-          <div className="grid overflow-hidden rounded-[36px] bg-navy lg:grid-cols-5">
-            <img src={CEO} alt={SITE.founder} className="h-80 w-full object-cover sm:h-[460px] lg:h-full lg:max-h-[560px] object-top lg:col-span-2" />
-            <div className="p-8 text-white md:p-14 lg:col-span-3">
+          <div className="grid overflow-hidden rounded-[28px] bg-navy md:grid-cols-5 md:rounded-[36px]">
+            <img src={CEO} alt={SITE.founder} className="h-80 w-full object-cover object-top sm:h-[420px] md:col-span-2 md:h-full md:max-h-[560px]" />
+            <div className="p-6 text-white sm:p-8 md:col-span-3 lg:p-14">
               <span className="eyebrow-dark">Message from the founder</span>
-              <p className="mt-6 text-2xl font-semibold leading-relaxed md:text-3xl">
+              <p className="mt-6 text-xl font-semibold leading-relaxed sm:text-2xl lg:text-3xl">
                 “Electricity is invisible until something goes wrong. Our job is to make sure it never does — and when it does, to be the first people you call.”
               </p>
               <p className="mt-8 text-xl font-extrabold text-brand">{SITE.founder}</p>

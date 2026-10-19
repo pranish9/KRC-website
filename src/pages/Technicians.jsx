@@ -45,16 +45,16 @@ export function TechnicianProfile() {
       <Seo title={`${t.name} – ${t.role}`} description={t.about} />
       <section className="container-site pt-8">
         <nav className="mb-6 text-sm"><Link to="/">Home</Link> / <Link to="/technicians">Technicians</Link> / <span className="font-semibold text-navy">{t.name}</span></nav>
-        <div className="grid overflow-hidden rounded-[36px] bg-navy lg:grid-cols-3">
-          <Img src={t.photo} alt={t.name} className="h-72 w-full object-top sm:h-96 lg:h-full" />
-          <div className="p-6 text-white sm:p-8 md:p-12 lg:col-span-2">
+        <div className="grid overflow-hidden rounded-[28px] bg-navy md:grid-cols-3 md:rounded-[36px]">
+          <Img src={t.photo} alt={t.name} className="h-80 w-full object-top sm:h-96 md:h-full" />
+          <div className="p-6 text-white sm:p-8 md:col-span-2 lg:p-12">
             <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${t.available ? 'bg-ok' : 'bg-white/15'}`}>● {t.available ? 'Available today' : 'Busy today — book for later'}</span>
             <h1 className="mt-4 flex flex-wrap items-center gap-2 text-4xl text-white md:text-5xl">{t.name} <BadgeCheck className="text-brand" size={32} /></h1>
             <p className="mt-2 text-xl text-white/70">{t.role}</p>
             <div className="mt-6 flex flex-wrap items-center gap-3 text-sm">
               <Stars value={t.rating} /> <span className="font-bold">{t.rating}</span> <span className="text-white/60">({t.reviews} reviews)</span>
             </div>
-            <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-3 xl:grid-cols-4">
               {[[Briefcase, `${t.experience} yrs`, 'Experience'], [CheckCircle2, t.jobs, 'Jobs done'], [Star, t.rating, 'Rating'], [MapPin, t.distance, 'From office']].map(([I, v, l]) => (
                 <div key={l} className="rounded-2xl bg-white/10 p-4"><I size={18} className="text-brand" /><p className="mt-2 text-2xl font-extrabold">{v}</p><p className="text-xs text-white/60">{l}</p></div>
               ))}
@@ -84,7 +84,7 @@ export function TechnicianProfile() {
               ))}
             </div>
           </div>
-          <div className="space-y-6">
+          <div className="grid content-start gap-6 md:grid-cols-2 lg:grid-cols-1">
             <div className="card p-7">
               <h3 className="flex items-center gap-2 text-lg"><Award size={20} /> Certifications</h3>
               <ul className="mt-3 space-y-2">{t.certifications.map((c) => <li key={c} className="flex gap-2"><CheckCircle2 size={18} className="mt-0.5 shrink-0 text-ok" /> {c}</li>)}</ul>

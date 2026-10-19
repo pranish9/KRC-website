@@ -12,7 +12,7 @@ const today = () => new Date().toISOString().slice(0, 10)
 
 function ContactAside() {
   return (
-    <aside className="space-y-4">
+    <aside className="grid content-start gap-4 sm:grid-cols-2 lg:grid-cols-1">
       {[
         [Phone, 'Hotline (24/7)', SITE.hotline, SITE.hotlineHref],
         [Phone, 'Office', SITE.office, SITE.officeHref],
@@ -24,7 +24,7 @@ function ContactAside() {
           <span><span className="block text-xs font-bold uppercase tracking-wider text-muted">{l}</span><span className="font-bold text-navy">{v}</span></span>
         </a>
       ))}
-      <div className="rounded-3xl bg-navy p-6 text-white">
+      <div className="rounded-3xl bg-navy p-6 text-white sm:col-span-2 lg:col-span-1">
         <p className="flex items-center gap-2 font-bold"><Clock size={18} className="text-brand" /> Opening hours</p>
         <ul className="mt-3 space-y-1.5 text-sm text-white/80">{SITE.hours.map((h) => <li key={h.day} className="flex justify-between gap-4"><span>{h.day}</span><span className="font-semibold text-white">{h.time}</span></li>)}</ul>
       </div>
@@ -100,7 +100,7 @@ export function Book() {
               <Field label="Site address" name="address" required placeholder="Tole, municipality, district" />
             </div>
           </SmartForm>
-          <aside className="space-y-4">
+          <aside className="grid content-start gap-4 md:grid-cols-2 lg:grid-cols-1">
             <div className="card p-7">
               <h3 className="text-xl">What happens next?</h3>
               <ol className="mt-4 space-y-4">

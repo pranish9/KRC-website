@@ -48,7 +48,7 @@ export default function HeroSlider() {
         <div className="relative grid min-h-[560px] gap-10 px-5 pb-28 pt-10 sm:px-8 sm:pt-14 md:min-h-[620px] md:px-14 md:py-20 lg:grid-cols-12">
           <div key={i} className="fade-in flex flex-col justify-center lg:col-span-7">
             <span className="eyebrow-dark w-fit">{s.eyebrow}</span>
-            <h1 className="mt-6 text-[34px] leading-[1.08] text-white sm:text-5xl md:text-6xl lg:text-7xl">{s.title}</h1>
+            <h1 className="mt-6 text-[34px] leading-[1.08] text-white sm:text-5xl md:text-6xl xl:text-7xl">{s.title}</h1>
             <p className="mt-5 max-w-xl text-base text-white/75 sm:mt-6 sm:text-lg">{s.text}</p>
             <div className="mt-8 flex flex-wrap gap-3 sm:mt-9">
               <Button to="/book">Book a site visit</Button>
