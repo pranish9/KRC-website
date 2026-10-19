@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { ChevronDown, Menu, X, Phone, Search, Mail, Clock } from 'lucide-react'
+import { ChevronDown, Menu, X, Search, Mail, Clock } from 'lucide-react'
 import { getIcon } from './icons'
 import { NAV, SITE } from '../data/site'
 import { services } from '../data/services'
@@ -55,14 +55,14 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <ul className="hidden items-center gap-1 xl:flex" onMouseLeave={() => setDrop(null)}>
+          <ul className="hidden flex-1 items-center justify-center gap-0.5 xl:flex 2xl:gap-1" onMouseLeave={() => setDrop(null)}>
             {NAV.map((item) => (
               <li key={item.label} className="relative" onMouseEnter={() => setDrop(item.children || item.mega ? item.label : null)}>
                 <NavLink
                   to={item.to}
                   end={item.to === '/'}
                   className={({ isActive }) =>
-                    `flex items-center gap-1 rounded-full px-3.5 py-2 text-[15px] font-semibold transition ${
+                    `flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-[15px] font-semibold transition 2xl:px-3.5 ${
                       isActive ? 'bg-brand-soft text-navy' : 'text-body hover:text-navy'
                     }`
                   }
@@ -108,11 +108,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-2">
-            <a href={SITE.hotlineHref} className="hidden items-center gap-2 whitespace-nowrap rounded-full px-3 py-2 text-sm font-bold text-navy 2xl:flex">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-soft"><Phone size={16} /></span>
-              {SITE.hotline}
-            </a>
+          <div className="flex shrink-0 items-center gap-2">
             <Button to="/book" className="hidden whitespace-nowrap sm:inline-flex">Book a visit</Button>
             <button onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-full bg-navy text-white xl:hidden" aria-label="Open menu">
               <Menu size={20} />
