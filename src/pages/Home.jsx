@@ -9,11 +9,10 @@ import { services } from '../data/services'
 import { projects } from '../data/projects'
 import { products } from '../data/products'
 import { technicians } from '../data/team'
-import { testimonials, faqs } from '../data/content'
+import { testimonials, faqs, clients } from '../data/content'
+import { asset } from '../lib/asset'
 import { SITE } from '../data/site'
 import { IMG, CEO } from '../data/images'
-
-const clients = ['Caltex', 'Trisara', 'Buddha Bar', 'City Hospital', 'ABC Company', 'XYZ Company', 'Hotel Thamel', 'Banquet Hall']
 
 export default function Home() {
   return (
@@ -21,12 +20,20 @@ export default function Home() {
       <Seo description="Kathmandu Repairing Center – electrical design, installation, repair, CCTV and products in Lalitpur. Licensed engineers and a 24/7 emergency line." />
       <HeroSlider />
 
-      {/* Clients marquee */}
-      <section className="container-site py-10">
-        <p className="mb-5 text-center text-sm font-bold uppercase tracking-wider text-muted">Trusted by businesses across the valley</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10 sm:gap-y-4">
-          {clients.map((c) => <span key={c} className="text-base font-extrabold text-navy/55 sm:text-xl">{c}</span>)}
-        </div>
+      {/* Client logos */}
+      <section className="container-site py-10" aria-labelledby="clients-title">
+        <h2 id="clients-title" className="mb-6 text-center text-sm font-bold uppercase tracking-wider text-muted">Trusted by businesses across the valley</h2>
+        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
+          {clients.map((c) => (
+            <li key={c.name} className="group grid h-16 place-items-center rounded-2xl bg-white px-4 ring-1 ring-line transition hover:ring-navy/20 sm:h-20">
+              {c.logo ? (
+                <img src={asset(c.logo)} alt={c.name} loading="lazy" className="max-h-10 w-auto max-w-full object-contain opacity-70 grayscale transition group-hover:opacity-100 group-hover:grayscale-0" />
+              ) : (
+                <span className="text-center text-sm font-extrabold leading-tight text-navy/70 transition group-hover:text-navy">{c.name}</span>
+              )}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* About */}

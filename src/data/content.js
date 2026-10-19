@@ -9,6 +9,20 @@ export const testimonials = [
   { quote: 'Honest advice. They told us we did not need the expensive panel another company quoted.', name: 'Hari Gurung', role: 'Building Owner, Patan', rating: 4, photo: PERSON },
 ]
 
+// Clients shown in "Trusted by businesses" on the home page.
+// To show a logo: put the file in /public/images/clients/ (SVG or transparent PNG works best)
+// and set `logo`, e.g. logo: 'images/clients/caltex.svg'. Without a logo the name is shown.
+export const clients = [
+  { name: 'Caltex', logo: null },
+  { name: 'Trisara', logo: null },
+  { name: 'Buddha Bar', logo: null },
+  { name: 'City Hospital', logo: null },
+  { name: 'ABC Company', logo: null },
+  { name: 'XYZ Company', logo: null },
+  { name: 'Hotel Thamel', logo: null },
+  { name: 'Banquet Hall', logo: null },
+]
+
 export const faqs = [
   { cat: 'General', q: 'Which areas do you serve?', a: 'We serve the whole Kathmandu Valley — Kathmandu, Lalitpur and Bhaktapur. For larger projects we also travel outside the valley.' },
   { cat: 'General', q: 'Are you really available 24/7?', a: 'Yes. Our emergency hotline (+977 985-1082575) is answered day and night, every day of the year, including festivals.' },
