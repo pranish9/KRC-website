@@ -24,8 +24,8 @@ export default function Home() {
       {/* Clients marquee */}
       <section className="container-site py-10">
         <p className="mb-5 text-center text-sm font-bold uppercase tracking-wider text-muted">Trusted by businesses across the valley</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          {clients.map((c) => <span key={c} className="text-xl font-extrabold text-navy/30">{c}</span>)}
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10 sm:gap-y-4">
+          {clients.map((c) => <span key={c} className="text-base font-extrabold sm:text-xl text-navy/30">{c}</span>)}
         </div>
       </section>
 
@@ -33,13 +33,13 @@ export default function Home() {
       <section className="section pt-8">
         <div className="container-site grid items-center gap-12 lg:grid-cols-2">
           <div className="relative">
-            <div className="grid grid-cols-5 gap-4">
-              <Img src={IMG.panelTest} alt="Engineer testing a panel" className="col-span-3 h-[440px] w-full rounded-[32px]" />
-              <div className="col-span-2 flex flex-col gap-4">
-                <Img src={IMG.breakers} alt="Circuit breakers" className="h-[210px] w-full rounded-[28px]" />
-                <div className="flex h-[214px] flex-col justify-end rounded-[28px] bg-navy p-6 text-white">
-                  <p className="text-5xl font-extrabold text-brand">15+</p>
-                  <p className="mt-1 font-semibold">Years keeping the valley powered</p>
+            <div className="grid grid-cols-5 gap-3 sm:gap-4">
+              <Img src={IMG.panelTest} alt="Engineer testing a panel" className="col-span-3 h-[300px] w-full rounded-[24px] sm:h-[440px] sm:rounded-[32px]" />
+              <div className="col-span-2 flex flex-col gap-3 sm:gap-4">
+                <Img src={IMG.breakers} alt="Circuit breakers" className="h-[140px] w-full rounded-[20px] sm:h-[210px] sm:rounded-[28px]" />
+                <div className="flex h-[148px] flex-col justify-end rounded-[20px] bg-navy p-4 text-white sm:h-[214px] sm:rounded-[28px] sm:p-6">
+                  <p className="text-3xl font-extrabold text-brand sm:text-5xl">15+</p>
+                  <p className="mt-1 text-sm font-semibold sm:text-base">Years keeping the valley powered</p>
                 </div>
               </div>
             </div>
@@ -78,14 +78,14 @@ export default function Home() {
 
       {/* Stats */}
       <section className="container-site py-16">
-        <div className="grid gap-4 rounded-[36px] bg-navy p-6 md:grid-cols-4 md:p-10">
+        <div className="grid grid-cols-2 gap-3 rounded-[28px] bg-navy p-4 sm:gap-4 sm:p-6 md:rounded-[36px] md:p-10 lg:grid-cols-4">
           {SITE.stats.map((s, i) => {
             const I = [Award, Users, Clock, ShieldCheck][i]
             return (
-              <div key={s.label} className="rounded-3xl bg-white/5 p-6 text-white">
+              <div key={s.label} className="rounded-3xl bg-white/5 p-4 text-white sm:p-6">
                 <I className="text-brand" />
-                <p className="mt-4 text-4xl font-extrabold md:text-5xl">{s.value}</p>
-                <p className="mt-1 text-white/70">{s.label}</p>
+                <p className="mt-4 text-3xl font-extrabold sm:text-4xl lg:text-5xl">{s.value}</p>
+                <p className="mt-1 text-sm text-white/70 sm:text-base">{s.label}</p>
               </div>
             )
           })}
@@ -111,7 +111,7 @@ export default function Home() {
       <section className="section bg-white">
         <div className="container-site">
           <SectionHead center eyebrow="How it works" title="From your call to a safe switch-on" />
-          <div className="grid gap-6 md:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {[
               ['01', 'Call or book', 'Tell us what you need by phone, WhatsApp or the booking form.'],
               ['02', 'Free site survey', 'An engineer visits, inspects and listens.'],
@@ -152,15 +152,15 @@ export default function Home() {
       <section className="container-site py-16">
         <div className="relative overflow-hidden rounded-[36px] bg-navy">
           <Img src={IMG.powerLines} alt="" className="absolute inset-0 h-full w-full opacity-25" />
-          <div className="relative grid gap-8 p-8 md:p-14 lg:grid-cols-2 lg:items-center">
+          <div className="relative grid gap-8 p-6 sm:p-8 md:p-14 lg:grid-cols-2 lg:items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-danger px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">● Emergency 24/7</span>
               <h2 className="mt-5 text-3xl text-white md:text-5xl">Sparks, smoke or a total blackout?</h2>
               <p className="mt-4 text-lg text-white/70">Switch off the main supply, keep everyone away and call us. A technician is on the way, day or night.</p>
             </div>
             <div className="flex flex-col gap-3 lg:items-end">
-              <a href={SITE.hotlineHref} className="flex items-center gap-4 rounded-full bg-danger py-2 pl-7 pr-2 text-2xl font-extrabold text-white">
-                {SITE.hotline}<span className="grid h-14 w-14 place-items-center rounded-full bg-white text-danger"><Phone /></span>
+              <a href={SITE.hotlineHref} className="flex w-fit items-center gap-4 rounded-full bg-danger py-2 pl-6 pr-2 text-xl font-extrabold text-white sm:pl-7 sm:text-2xl">
+                {SITE.hotline}<span className="grid h-12 w-12 place-items-center rounded-full bg-white text-danger sm:h-14 sm:w-14"><Phone /></span>
               </a>
               <Link to="/emergency" className="flex items-center gap-1 font-bold text-brand hover:underline">What to do in an emergency <ArrowUpRight size={16} /></Link>
             </div>
@@ -172,7 +172,7 @@ export default function Home() {
       <section className="section pt-4">
         <div className="container-site">
           <SectionHead eyebrow="Testimonials" title="What our clients say" action={<Button to="/testimonials" variant="outline">All reviews</Button>} />
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {testimonials.slice(0, 3).map((t) => <TestimonialCard key={t.name} t={t} />)}
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="pt-20"><CtaBand /></div>
+      <div className="pt-12 sm:pt-20"><CtaBand /></div>
     </>
   )
 }

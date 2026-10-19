@@ -4,7 +4,10 @@
 
 @layer base {
   html { scroll-behavior: smooth; }
-  body { @apply bg-bg text-body font-sans antialiased; }
+  body { @apply bg-bg text-body font-sans antialiased; overflow-x: clip; }
+  /* Let grid children shrink below their content width so long words or rows never push the page sideways. */
+  .grid > * { min-width: 0; }
+  img, video, iframe { max-width: 100%; }
   h1, h2, h3, h4 { @apply text-navy font-extrabold tracking-tight; }
 }
 
@@ -24,5 +27,8 @@
   .prose-krc ul { @apply mb-4 list-disc space-y-1 pl-6; }
 }
 
+@media (prefers-reduced-motion: reduce) { .fade-in { animation: none; } html { scroll-behavior: auto; } }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 .fade-in { animation: fadeIn .6s ease both; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }

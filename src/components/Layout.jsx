@@ -8,19 +8,21 @@ import { Button } from './ui'
 
 function ScrollTop() {
   const { pathname } = useLocation()
-  useEffect(() => window.scrollTo(0, 0), [pathname])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
   return null
 }
 
 export function CtaBand() {
   return (
     <section className="container-site pb-20">
-      <div className="relative overflow-hidden rounded-[36px] bg-brand px-6 py-14 md:px-14">
+      <div className="relative overflow-hidden rounded-[28px] bg-brand px-6 py-10 sm:py-14 md:rounded-[36px] md:px-14">
         <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full border-[40px] border-navy/5" />
         <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-5xl">Have a project or a problem? Let’s talk today.</h2>
-            <p className="mt-3 text-lg text-navy/70">Free site survey for new projects inside the Kathmandu Valley.</p>
+            <p className="mt-3 text-base text-navy/70 sm:text-lg">Free site survey for new projects inside the Kathmandu Valley.</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Button to="/book" variant="dark">Book a site visit</Button>
@@ -44,9 +46,9 @@ export default function Layout() {
       <Footer />
 
       {/* Floating quick actions */}
-      <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
-        <a href={SITE.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="grid h-14 w-14 place-items-center rounded-full bg-ok text-white shadow-xl transition hover:scale-105"><MessageCircle /></a>
-        <a href={SITE.hotlineHref} aria-label="Call hotline" className="relative grid h-14 w-14 place-items-center rounded-full bg-danger text-white shadow-xl transition hover:scale-105">
+      <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-40 flex flex-col gap-3 sm:bottom-5 sm:right-5">
+        <a href={SITE.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="grid h-12 w-12 place-items-center rounded-full bg-ok sm:h-14 sm:w-14 text-white shadow-xl transition hover:scale-105"><MessageCircle /></a>
+        <a href={SITE.hotlineHref} aria-label="Call hotline" className="relative grid h-12 w-12 place-items-center rounded-full bg-danger sm:h-14 sm:w-14 text-white shadow-xl transition hover:scale-105">
           <span className="absolute inset-0 animate-ping rounded-full bg-danger opacity-30" />
           <Phone className="relative" />
         </a>

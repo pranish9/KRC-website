@@ -46,8 +46,8 @@ export function TechnicianProfile() {
       <section className="container-site pt-8">
         <nav className="mb-6 text-sm"><Link to="/">Home</Link> / <Link to="/technicians">Technicians</Link> / <span className="font-semibold text-navy">{t.name}</span></nav>
         <div className="grid overflow-hidden rounded-[36px] bg-navy lg:grid-cols-3">
-          <Img src={t.photo} alt={t.name} className="h-80 w-full object-top lg:h-full" />
-          <div className="p-8 text-white md:p-12 lg:col-span-2">
+          <Img src={t.photo} alt={t.name} className="h-72 w-full object-top sm:h-96 lg:h-full" />
+          <div className="p-6 text-white sm:p-8 md:p-12 lg:col-span-2">
             <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${t.available ? 'bg-ok' : 'bg-white/15'}`}>● {t.available ? 'Available today' : 'Busy today — book for later'}</span>
             <h1 className="mt-4 flex flex-wrap items-center gap-2 text-4xl text-white md:text-5xl">{t.name} <BadgeCheck className="text-brand" size={32} /></h1>
             <p className="mt-2 text-xl text-white/70">{t.role}</p>
@@ -69,7 +69,7 @@ export function TechnicianProfile() {
 
       <section className="section pt-10">
         <div className="container-site grid gap-6 lg:grid-cols-3">
-          <div className="card p-8 lg:col-span-2">
+          <div className="card p-6 sm:p-8 lg:col-span-2">
             <h2 className="text-2xl">About</h2>
             <p className="mt-3 text-lg leading-relaxed">{t.about}</p>
             <h3 className="mt-8 text-xl">Skills</h3>
@@ -148,7 +148,7 @@ export function BookTechnician() {
           </SmartForm>
 
           <aside className="space-y-6">
-            <div className="card sticky top-28 p-6">
+            <div className="card p-6 lg:sticky lg:top-28">
               <div className="flex items-center gap-4">
                 <Img src={t.photo} alt={t.name} className="h-16 w-16 rounded-2xl" />
                 <div><p className="font-extrabold text-navy">{t.name}</p><p className="text-sm">{t.role}</p></div>

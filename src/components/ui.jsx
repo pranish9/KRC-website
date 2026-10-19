@@ -46,8 +46,8 @@ export function SectionHead({ eyebrow, title, text, center, dark, action }) {
     <div className={`mb-10 flex flex-col gap-6 md:mb-14 ${center ? 'items-center text-center' : 'md:flex-row md:items-end md:justify-between'}`}>
       <div className={center ? 'max-w-2xl' : 'max-w-2xl'}>
         {eyebrow && <span className={dark ? 'eyebrow-dark' : 'eyebrow'}>{eyebrow}</span>}
-        <h2 className={`mt-4 text-3xl leading-tight md:text-5xl ${dark ? 'text-white' : ''}`}>{title}</h2>
-        {text && <p className={`mt-4 text-lg ${dark ? 'text-white/70' : ''}`}>{text}</p>}
+        <h2 className={`mt-4 text-[28px] leading-tight sm:text-4xl lg:text-5xl ${dark ? 'text-white' : ''}`}>{title}</h2>
+        {text && <p className={`mt-4 text-base sm:text-lg ${dark ? 'text-white/70' : ''}`}>{text}</p>}
       </div>
       {action}
     </div>

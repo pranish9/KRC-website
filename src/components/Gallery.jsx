@@ -31,14 +31,14 @@ export function Lightbox({ images, index, onClose, onIndex }) {
         <img src={images[index]} alt="" className="max-h-[78vh] max-w-full rounded-2xl object-contain" onClick={(e) => e.stopPropagation()} />
         {n > 1 && (
           <>
-            <button onClick={(e) => { e.stopPropagation(); prev() }} className="absolute left-3 grid h-12 w-12 place-items-center rounded-full bg-white text-navy md:left-8" aria-label="Previous"><ChevronLeft /></button>
-            <button onClick={(e) => { e.stopPropagation(); next() }} className="absolute right-3 grid h-12 w-12 place-items-center rounded-full bg-brand text-navy md:right-8" aria-label="Next"><ChevronRight /></button>
+            <button onClick={(e) => { e.stopPropagation(); prev() }} className="absolute left-3 grid h-10 w-10 sm:h-12 sm:w-12 place-items-center rounded-full bg-white text-navy md:left-8" aria-label="Previous"><ChevronLeft /></button>
+            <button onClick={(e) => { e.stopPropagation(); next() }} className="absolute right-3 grid h-10 w-10 sm:h-12 sm:w-12 place-items-center rounded-full bg-brand text-navy md:right-8" aria-label="Next"><ChevronRight /></button>
           </>
         )}
       </div>
-      <div className="flex justify-center gap-2 overflow-x-auto p-4">
+      <div className="no-scrollbar flex gap-2 overflow-x-auto p-4 [&>:first-child]:ml-auto [&>:last-child]:mr-auto">
         {images.map((src, i) => (
-          <button key={i} onClick={() => onIndex(i)} className={`h-16 w-24 shrink-0 overflow-hidden rounded-xl ring-2 transition ${i === index ? 'ring-brand' : 'opacity-50 ring-transparent hover:opacity-100'}`}>
+          <button key={i} onClick={() => onIndex(i)} className={`h-12 w-16 shrink-0 sm:h-16 sm:w-24 overflow-hidden rounded-xl ring-2 transition ${i === index ? 'ring-brand' : 'opacity-50 ring-transparent hover:opacity-100'}`}>
             <img src={src} alt="" className="h-full w-full object-cover" />
           </button>
         ))}
@@ -54,7 +54,7 @@ export default function Gallery({ images, title = 'Photo' }) {
   const layout = ['md:col-span-2 md:row-span-2', '', '', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2']
   return (
     <>
-      <div className="grid auto-rows-[180px] grid-cols-2 gap-3 md:auto-rows-[200px] md:grid-cols-4">
+      <div className="grid auto-rows-[140px] grid-cols-2 gap-2 sm:auto-rows-[180px] sm:gap-3 md:auto-rows-[200px] md:grid-cols-4">
         {images.map((src, i) => (
           <button key={i} onClick={() => setOpen(i)} className={`group relative overflow-hidden rounded-3xl ${layout[i % layout.length]}`} aria-label={`Open ${title} ${i + 1}`}>
             <Img src={src} alt={`${title} ${i + 1}`} className="h-full w-full transition duration-500 group-hover:scale-105" />

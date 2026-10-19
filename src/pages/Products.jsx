@@ -74,11 +74,11 @@ export function ProductDetail() {
         <nav className="mb-6 text-sm"><Link to="/" className="hover:text-navy">Home</Link> / <Link to="/products" className="hover:text-navy">Products</Link> / <span className="font-semibold text-navy">{p.name}</span></nav>
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
-            <Img src={p.gallery[img] || p.image} alt={p.name} className="h-[460px] w-full rounded-[32px] bg-white" />
+            <Img src={p.gallery[img] || p.image} alt={p.name} className="h-72 w-full rounded-[24px] bg-white sm:h-[400px] sm:rounded-[32px] lg:h-[460px]" />
             {p.gallery.length > 1 && (
-              <div className="mt-4 flex gap-3">
+              <div className="no-scrollbar mt-4 flex gap-3 overflow-x-auto p-0.5">
                 {p.gallery.map((g, i) => (
-                  <button key={i} onClick={() => setImg(i)} className={`h-20 w-24 overflow-hidden rounded-2xl ring-2 ${i === img ? 'ring-navy' : 'ring-transparent opacity-60'}`}>
+                  <button key={i} onClick={() => setImg(i)} className={`h-16 w-20 shrink-0 overflow-hidden sm:h-20 sm:w-24 rounded-2xl ring-2 ${i === img ? 'ring-navy' : 'ring-transparent opacity-60'}`}>
                     <Img src={g} alt="" className="h-full w-full" />
                   </button>
                 ))}
@@ -89,8 +89,8 @@ export function ProductDetail() {
             <p className="text-sm font-bold uppercase tracking-wider text-muted">{p.brand} · {p.category}</p>
             <h1 className="mt-2 text-3xl leading-tight md:text-5xl">{p.name}</h1>
             <p className="mt-4 text-lg">{p.summary}</p>
-            <div className="mt-6 flex items-center gap-4">
-              <span className="text-4xl font-extrabold text-navy">{npr(p.price)}</span>
+            <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
+              <span className="text-3xl font-extrabold text-navy sm:text-4xl">{npr(p.price)}</span>
               <span className={`rounded-full px-3 py-1 text-sm font-bold ${p.inStock ? 'bg-ok/10 text-ok' : 'bg-bg text-body'}`}>{p.inStock ? 'In stock' : 'On order (3–7 days)'}</span>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">

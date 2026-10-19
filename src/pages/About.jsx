@@ -31,8 +31,8 @@ export default function About() {
             <p className="mt-4 text-lg">We still work the same way — a written quotation before work begins, genuine materials, neat installation, and a phone that is answered at any hour.</p>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <Img src={IMG.screwdriverPanel} alt="Technician at work" className="h-80 w-full rounded-[28px]" />
-            <Img src={IMG.wiresBox} alt="Wiring work" className="mt-12 h-80 w-full rounded-[28px]" />
+            <Img src={IMG.screwdriverPanel} alt="Technician at work" className="h-56 w-full rounded-[24px] sm:h-80 sm:rounded-[28px]" />
+            <Img src={IMG.wiresBox} alt="Wiring work" className="mt-8 h-56 w-full rounded-[24px] sm:mt-12 sm:h-80 sm:rounded-[28px]" />
           </div>
         </div>
       </section>
@@ -57,7 +57,7 @@ export default function About() {
       <section className="section">
         <div className="container-site">
           <div className="grid overflow-hidden rounded-[36px] bg-navy lg:grid-cols-5">
-            <img src={CEO} alt={SITE.founder} className="h-full max-h-[560px] w-full object-cover object-top lg:col-span-2" />
+            <img src={CEO} alt={SITE.founder} className="h-80 w-full object-cover sm:h-[460px] lg:h-full lg:max-h-[560px] object-top lg:col-span-2" />
             <div className="p-8 text-white md:p-14 lg:col-span-3">
               <span className="eyebrow-dark">Message from the founder</span>
               <p className="mt-6 text-2xl font-semibold leading-relaxed md:text-3xl">

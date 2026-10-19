@@ -6,7 +6,7 @@ import { Img } from './ui'
 export default function PageHero({ eyebrow, title, text, crumbs = [], image, children }) {
   return (
     <section className="container-site pt-6">
-      <div className="relative overflow-hidden rounded-[32px] bg-navy px-6 py-14 text-white md:px-14 md:py-20">
+      <div className="relative overflow-hidden rounded-[28px] bg-navy px-5 py-10 text-white sm:px-8 sm:py-14 md:rounded-[32px] md:px-14 md:py-20">
         {image && (
           <>
             <Img src={image} alt="" className="absolute inset-0 h-full w-full opacity-30" />
@@ -25,8 +25,8 @@ export default function PageHero({ eyebrow, title, text, crumbs = [], image, chi
             ))}
           </nav>
           {eyebrow && <span className="eyebrow-dark">{eyebrow}</span>}
-          <h1 className="mt-4 text-4xl leading-[1.08] text-white md:text-6xl">{title}</h1>
-          {text && <p className="mt-5 max-w-2xl text-lg text-white/70">{text}</p>}
+          <h1 className="mt-4 text-[32px] leading-[1.1] text-white sm:text-5xl md:text-6xl">{title}</h1>
+          {text && <p className="mt-5 max-w-2xl text-base text-white/70 sm:text-lg">{text}</p>}
           {children && <div className="mt-8">{children}</div>}
         </div>
       </div>

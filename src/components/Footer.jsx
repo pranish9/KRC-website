@@ -13,9 +13,9 @@ export default function Footer() {
         <div className="relative -top-0 flex flex-col items-start justify-between gap-6 border-b border-white/10 py-12 md:flex-row md:items-center">
           <div>
             <p className="text-sm font-bold uppercase tracking-wider text-brand">Power problem right now?</p>
-            <h3 className="mt-2 text-3xl text-white md:text-4xl">We answer 24 hours, 7 days a week.</h3>
+            <h3 className="mt-2 text-2xl text-white sm:text-3xl md:text-4xl">We answer 24 hours, 7 days a week.</h3>
           </div>
-          <a href={SITE.hotlineHref} className="group inline-flex items-center gap-4 rounded-full bg-brand py-2 pl-7 pr-2 text-lg font-extrabold text-navy">
+          <a href={SITE.hotlineHref} className="group inline-flex items-center gap-4 rounded-full bg-brand py-2 pl-6 pr-2 text-base font-extrabold sm:pl-7 sm:text-lg text-navy">
             {SITE.hotline}
             <span className="grid h-12 w-12 place-items-center rounded-full bg-navy text-brand transition group-hover:rotate-12"><Phone size={20} /></span>
           </a>
@@ -72,9 +72,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-white/10 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-t border-white/10 py-6 pb-28 text-xs sm:flex-row sm:pb-6 sm:items-center sm:justify-between">
           <p>© {year} {SITE.name}. All rights reserved.</p>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap gap-5">
             <Link to="/privacy" className="hover:text-white">Privacy</Link>
             <Link to="/terms" className="hover:text-white">Terms</Link>
             <Link to="/sitemap" className="hover:text-white">Sitemap</Link>

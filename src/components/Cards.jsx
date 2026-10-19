@@ -26,16 +26,16 @@ export function ServiceCard({ s, i }) {
 
 export function ProjectCard({ p, large }) {
   return (
-    <Link to={`/projects/${p.slug}`} className={`group relative block overflow-hidden rounded-[28px] bg-navy ${large ? 'h-[420px] md:h-[520px]' : 'h-[380px]'}`}>
+    <Link to={`/projects/${p.slug}`} className={`group relative block overflow-hidden rounded-[28px] bg-navy ${large ? 'h-[340px] sm:h-[420px] md:h-[520px]' : 'h-[320px] sm:h-[380px]'}`}>
       <Img src={p.cover} alt={p.title} className="absolute inset-0 h-full w-full transition duration-700 group-hover:scale-105" />
       <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
       <div className="absolute left-5 top-5 flex gap-2">
         <span className="rounded-full bg-brand px-3 py-1 text-xs font-extrabold text-navy">#{p.number}</span>
         <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white backdrop-blur">{p.sector}</span>
       </div>
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-6">
         <div>
-          <h3 className="text-2xl text-white">{p.title}</h3>
+          <h3 className="text-xl text-white sm:text-2xl">{p.title}</h3>
           <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-white/70">
             <span className="flex items-center gap-1.5"><MapPin size={14} /> {p.location}</span>
             <span className="flex items-center gap-1.5"><Calendar size={14} /> {p.completed}</span>
@@ -95,7 +95,7 @@ export function TechCard({ t }) {
 
 export function TestimonialCard({ t }) {
   return (
-    <figure className="card flex h-full flex-col p-7">
+    <figure className="card flex h-full flex-col p-6 sm:p-7">
       <div className="flex items-center justify-between">
         <Stars value={t.rating} />
         <Quote size={32} className="text-brand" />

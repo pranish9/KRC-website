@@ -94,7 +94,7 @@ export function ProjectDetail() {
       <section className="section pt-10">
         <div className="container-site">
           {/* Key facts */}
-          <div className="grid gap-3 rounded-[28px] bg-white p-3 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-3 rounded-[28px] bg-white p-3 sm:grid-cols-3 lg:grid-cols-6">
             {facts.map(([I, l, v]) => (
               <div key={l} className="rounded-2xl bg-bg p-4">
                 <I size={18} className="text-navy" />
@@ -111,11 +111,11 @@ export function ProjectDetail() {
           <div className="mt-14 grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-8">
               <div className="grid gap-6 md:grid-cols-2">
-                <div className="rounded-[28px] bg-white p-8">
+                <div className="rounded-[28px] bg-white p-6 sm:p-8">
                   <span className="eyebrow">The challenge</span>
                   <p className="mt-5 text-lg leading-relaxed">{p.challenge}</p>
                 </div>
-                <div className="rounded-[28px] bg-navy p-8 text-white">
+                <div className="rounded-[28px] bg-navy p-6 text-white sm:p-8">
                   <span className="eyebrow-dark">Our solution</span>
                   <p className="mt-5 text-lg leading-relaxed text-white/80">{p.solution}</p>
                 </div>
@@ -142,9 +142,9 @@ export function ProjectDetail() {
               )}
 
               {p.review && (
-                <figure className="mt-12 rounded-[28px] bg-white p-8 md:p-10">
+                <figure className="mt-12 rounded-[28px] bg-white p-6 sm:p-8 md:p-10">
                   <Quote className="text-brand" size={40} />
-                  <blockquote className="mt-4 text-2xl font-semibold leading-relaxed text-navy">“{p.review.quote}”</blockquote>
+                  <blockquote className="mt-4 text-xl font-semibold sm:text-2xl leading-relaxed text-navy">“{p.review.quote}”</blockquote>
                   <figcaption className="mt-5 font-bold text-body">— {p.review.by}</figcaption>
                 </figure>
               )}

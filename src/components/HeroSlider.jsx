@@ -39,24 +39,24 @@ export default function HeroSlider() {
   const s = slides[i]
   return (
     <section className="container-site pt-6" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      <div className="relative overflow-hidden rounded-[36px] bg-navy">
+      <div className="relative overflow-hidden rounded-[28px] bg-navy md:rounded-[36px]">
         {slides.map((sl, k) => (
           <Img key={k} src={sl.image} alt="" className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ${k === i ? 'opacity-100' : 'opacity-0'}`} />
         ))}
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/20" />
 
-        <div className="relative grid min-h-[620px] gap-10 px-6 pb-28 pt-14 md:px-14 md:py-20 lg:grid-cols-12">
+        <div className="relative grid min-h-[560px] gap-10 px-5 pb-28 pt-10 sm:px-8 sm:pt-14 md:min-h-[620px] md:px-14 md:py-20 lg:grid-cols-12">
           <div key={i} className="fade-in flex flex-col justify-center lg:col-span-7">
             <span className="eyebrow-dark w-fit">{s.eyebrow}</span>
-            <h1 className="mt-6 text-[40px] leading-[1.05] text-white md:text-6xl lg:text-7xl">{s.title}</h1>
-            <p className="mt-6 max-w-xl text-lg text-white/75">{s.text}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <h1 className="mt-6 text-[34px] leading-[1.08] text-white sm:text-5xl md:text-6xl lg:text-7xl">{s.title}</h1>
+            <p className="mt-5 max-w-xl text-base text-white/75 sm:mt-6 sm:text-lg">{s.text}</p>
+            <div className="mt-8 flex flex-wrap gap-3 sm:mt-9">
               <Button to="/book">Book a site visit</Button>
               <Button href={SITE.hotlineHref} variant="ghostLight" icon="phone">Call 24/7</Button>
             </div>
             <div className="mt-10 flex items-center gap-4">
-              <div className="flex -space-x-3">
-                {[0, 1, 2, 3].map((k) => <img key={k} src={PERSON} alt="" className="h-11 w-11 rounded-full object-cover ring-4 ring-navy" />)}
+              <div className="flex shrink-0 -space-x-3">
+                {[0, 1, 2, 3].map((k) => <img key={k} src={PERSON} alt="" className="h-10 w-10 shrink-0 rounded-full object-cover ring-4 ring-navy sm:h-11 sm:w-11" />)}
               </div>
               <div className="text-sm text-white/80">
                 <span className="font-extrabold text-white">850+ projects</span> trusted by homes,<br className="hidden sm:block" /> restaurants, banks &amp; hospitals
@@ -80,7 +80,7 @@ export default function HeroSlider() {
           </div>
         </div>
 
-        <div className="absolute bottom-6 right-6 flex items-center gap-3 md:bottom-10 md:right-10">
+        <div className="absolute bottom-5 left-5 flex items-center gap-3 sm:bottom-6 sm:left-auto sm:right-6 md:bottom-10 md:right-10">
           <div className="mr-2 hidden gap-1.5 sm:flex">
             {slides.map((_, k) => (
               <button key={k} onClick={() => setI(k)} aria-label={`Slide ${k + 1}`} className={`h-2 rounded-full transition-all ${k === i ? 'w-8 bg-brand' : 'w-2 bg-white/40'}`} />
