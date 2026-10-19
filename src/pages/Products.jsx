@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Search, CheckCircle2, Truck, ShieldCheck, Wrench, Phone } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import { Seo, Img, Button } from '../components/ui'
+import { Seo, Img, Button, SIZES } from '../components/ui'
 import { ProductCard } from '../components/Cards'
 import { CtaBand, NotFoundInline } from '../components/Layout'
 import { products, productCategories, getProduct, npr } from '../data/products'
@@ -74,12 +74,12 @@ export function ProductDetail() {
         <nav className="mb-6 text-sm"><Link to="/" className="hover:text-navy">Home</Link> / <Link to="/products" className="hover:text-navy">Products</Link> / <span className="font-semibold text-navy">{p.name}</span></nav>
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
-            <Img src={p.gallery[img] || p.image} alt={p.name} className="h-72 w-full rounded-[24px] bg-white sm:h-[400px] sm:rounded-[32px] lg:h-[460px]" />
+            <Img src={p.gallery[img] || p.image} alt={p.name} priority className="h-72 w-full rounded-[24px] bg-white sm:h-[400px] sm:rounded-[32px] lg:h-[460px]" />
             {p.gallery.length > 1 && (
               <div className="no-scrollbar mt-4 flex gap-3 overflow-x-auto p-0.5">
                 {p.gallery.map((g, i) => (
                   <button key={i} onClick={() => setImg(i)} className={`h-16 w-20 shrink-0 overflow-hidden sm:h-20 sm:w-24 rounded-2xl ring-2 ${i === img ? 'ring-navy' : 'ring-transparent opacity-60'}`}>
-                    <Img src={g} alt="" className="h-full w-full" />
+                    <Img src={g} alt="" sizes={SIZES.thumb} className="h-full w-full" />
                   </button>
                 ))}
               </div>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { MapPin, Calendar, Clock, Building2, Briefcase, ShieldCheck, FileText, Download, Quote, ChevronLeft, ChevronRight, PlayCircle, Printer, Share2 } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import { Seo, Img, Button } from '../components/ui'
+import { Seo, Img, Button, SIZES } from '../components/ui'
 import { ProjectCard } from '../components/Cards'
 import Gallery from '../components/Gallery'
 import { CtaBand, NotFoundInline } from '../components/Layout'
@@ -191,12 +191,12 @@ export function ProjectDetail() {
           <div className="mt-16 grid gap-4 border-t border-line pt-10 sm:grid-cols-2 print:hidden">
             <Link to={`/projects/${prev.slug}`} className="group flex items-center gap-4 rounded-3xl bg-white p-4">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-bg group-hover:bg-brand"><ChevronLeft /></span>
-              <Img src={prev.cover} alt="" className="hidden h-16 w-20 rounded-2xl sm:block" />
+              <Img src={prev.cover} alt="" sizes={SIZES.thumb} className="hidden h-16 w-20 rounded-2xl sm:block" />
               <span><span className="block text-xs font-bold uppercase text-muted">Previous · #{prev.number}</span><span className="font-bold text-navy">{prev.title}</span></span>
             </Link>
             <Link to={`/projects/${next.slug}`} className="group flex items-center justify-end gap-4 rounded-3xl bg-white p-4 text-right">
               <span><span className="block text-xs font-bold uppercase text-muted">Next · #{next.number}</span><span className="font-bold text-navy">{next.title}</span></span>
-              <Img src={next.cover} alt="" className="hidden h-16 w-20 rounded-2xl sm:block" />
+              <Img src={next.cover} alt="" sizes={SIZES.thumb} className="hidden h-16 w-20 rounded-2xl sm:block" />
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-bg group-hover:bg-brand"><ChevronRight /></span>
             </Link>
           </div>

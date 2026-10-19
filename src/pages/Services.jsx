@@ -47,7 +47,7 @@ export function ServiceDetail() {
       <section className="section">
         <div className="container-site grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <Img src={s.image} alt={s.title} className="h-64 w-full rounded-[24px] sm:h-[360px] sm:rounded-[32px] lg:h-[420px]" />
+            <Img src={s.image} alt={s.title} sizes="(min-width: 1024px) 800px, 100vw" className="h-64 w-full rounded-[24px] sm:h-[360px] sm:rounded-[32px] lg:h-[420px]" />
             <h2 className="mt-10 text-3xl">Overview</h2>
             <p className="mt-4 text-lg leading-relaxed">{s.intro}</p>
 

@@ -1,7 +1,7 @@
 import { useSearchParams, Link, useLocation } from 'react-router-dom'
 import { Phone, Mail, MapPin, Clock, CheckCircle2, CalendarCheck, AlertTriangle, Power, Users, Flame, PhoneCall } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import { Seo, Button, Img } from '../components/ui'
+import { Seo, Button, Img, SIZES } from '../components/ui'
 import { Field, SmartForm } from '../components/Form'
 import { services, getService } from '../data/services'
 import { products, getProduct, npr } from '../data/products'
@@ -45,7 +45,7 @@ export function Enquiry() {
           <SmartForm subject={product ? `Product enquiry – ${product.name}` : 'General enquiry'} submitLabel="Send enquiry" className="card p-6 md:p-10 lg:col-span-2">
             {product && (
               <div className="mb-8 flex items-center gap-4 rounded-2xl bg-bg p-4">
-                <Img src={product.image} alt="" className="h-16 w-16 rounded-xl" />
+                <Img src={product.image} alt="" sizes={SIZES.thumb} className="h-16 w-16 rounded-xl" />
                 <div className="flex-1"><p className="text-xs font-bold uppercase text-muted">Enquiring about</p><p className="font-bold text-navy">{product.name}</p></div>
                 <p className="font-extrabold text-navy">{npr(product.price)}</p>
               </div>
@@ -154,7 +154,7 @@ export function Emergency() {
       <Seo title="24/7 Emergency" description="Electrical emergency in Kathmandu Valley? Call KRC 24/7 on +977 985-1082575." />
       <section className="container-site pt-6">
         <div className="relative overflow-hidden rounded-[36px] bg-danger px-6 py-16 text-white md:px-14 md:py-24">
-          <Img src={IMG.powerLines} alt="" className="absolute inset-0 h-full w-full opacity-15 mix-blend-multiply" />
+          <Img src={IMG.powerLines} alt="" sizes={SIZES.full} className="absolute inset-0 h-full w-full opacity-15 mix-blend-multiply" />
           <div className="relative max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">● Available 24 hours · 7 days</span>
             <h1 className="mt-5 text-4xl leading-tight text-white md:text-6xl">Electrical emergency? Call now.</h1>

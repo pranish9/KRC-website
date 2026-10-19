@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { ArrowUpRight, Phone, Star } from 'lucide-react'
 import { SITE } from '../data/site'
@@ -54,8 +54,23 @@ export function SectionHead({ eyebrow, title, text, center, dark, action }) {
   )
 }
 
+// Widths offered to the browser for Unsplash photos; it downloads the smallest one that fits `sizes`.
+const SRCSET_WIDTHS = [320, 480, 640, 960, 1280, 1600]
+const srcSetFor = (src) =>
+  src?.includes('images.unsplash.com')
+    ? SRCSET_WIDTHS.map((w) => `${src.replace(/([?&])w=\d+/, `$1w=${w}`)} ${w}w`).join(', ')
+    : undefined
+
+// Common `sizes` values: how wide the image is shown on screen.
+export const SIZES = {
+  full: '(min-width: 1280px) 1240px, 100vw',
+  card: '(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw',
+  thumb: '96px',
+}
+
 // Image with graceful fallback (navy panel with logo) if the photo fails to load.
-export function Img({ src, alt = '', className = '', ...rest }) {
+// Pass `priority` for the main image at the top of a page so it loads first.
+export function Img({ src, alt = '', className = '', sizes = '(min-width: 1024px) 600px, 100vw', priority, ...rest }) {
   const [err, setErr] = useState(false)
   if (err || !src)
     return (
@@ -65,7 +80,21 @@ export function Img({ src, alt = '', className = '', ...rest }) {
         {alt && <span className="relative max-w-[90%] text-xs font-semibold text-white/50">{alt}</span>}
       </div>
     )
-  return <img src={src} alt={alt} loading="lazy" decoding="async" onError={() => setErr(true)} className={`object-cover ${className}`} {...rest} />
+  const srcSet = srcSetFor(src)
+  return (
+    <img
+      src={src}
+      srcSet={srcSet}
+      sizes={srcSet ? sizes : undefined}
+      alt={alt}
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : undefined}
+      decoding="async"
+      onError={() => setErr(true)}
+      className={`object-cover ${className}`}
+      {...rest}
+    />
+  )
 }
 
 export function Stars({ value = 5, size = 16 }) {
@@ -80,16 +109,27 @@ export function Stars({ value = 5, size = 16 }) {
 
 const DEFAULT_DESCRIPTION = 'Electrical design, installation, repair, CCTV and products in Lalitpur. Licensed engineers and a 24/7 emergency line.'
 
+// Same address the build used for index.html, sitemap and robots.txt (see vite.config.js).
+const SITE_URL = import.meta.env.VITE_SITE_URL || SITE.url
+
 export function Seo({ title, description = DEFAULT_DESCRIPTION, image }) {
+  const { pathname } = useLocation()
   const t = title ? `${title} | Kathmandu Repairing Center` : `${SITE.name} | Electrical Engineering, Lalitpur`
+  const img = !image ? `${SITE_URL}/images/og-image.png` : image.startsWith('/') ? SITE_URL + image : image
+  const url = SITE_URL + pathname
   return (
     <Helmet>
       <title>{t}</title>
       <meta name="description" content={description} />
+      <link rel="canonical" href={url} />
+      <meta property="og:url" content={url} />
       <meta property="og:title" content={t} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image || `${SITE.url}/images/og-image.png`} />
+      <meta property="og:image" content={img} />
       <meta property="og:type" content="website" />
+      <meta name="twitter:title" content={t} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={img} />
     </Helmet>
   )
 }

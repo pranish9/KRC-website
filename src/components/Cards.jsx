@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, MapPin, Calendar, Quote, Star, BadgeCheck } from 'lucide-react'
-import { Img, Stars } from './ui'
+import { Img, Stars, SIZES } from './ui'
 import { getIcon } from './icons'
 import { npr } from '../data/products'
 
@@ -9,7 +9,7 @@ export function ServiceCard({ s, i }) {
   return (
     <Link to={`/services/${s.slug}`} className="group card relative flex flex-col overflow-hidden p-3 transition hover:-translate-y-1">
       <div className="relative h-52 overflow-hidden rounded-[20px]">
-        <Img src={s.image} alt={s.title} className="h-full w-full transition duration-500 group-hover:scale-105" />
+        <Img src={s.image} alt={s.title} sizes={SIZES.card} className="h-full w-full transition duration-500 group-hover:scale-105" />
         {i != null && <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-navy">0{i + 1}</span>}
       </div>
       <div className="flex flex-1 flex-col p-4">
@@ -27,7 +27,7 @@ export function ServiceCard({ s, i }) {
 export function ProjectCard({ p, large }) {
   return (
     <Link to={`/projects/${p.slug}`} className={`group relative block overflow-hidden rounded-[28px] bg-navy ${large ? 'h-[340px] sm:h-[420px] md:h-[520px]' : 'h-[320px] sm:h-[380px]'}`}>
-      <Img src={p.cover} alt={p.title} className="absolute inset-0 h-full w-full transition duration-700 group-hover:scale-105" />
+      <Img src={p.cover} alt={p.title} sizes="(min-width: 1024px) 720px, (min-width: 768px) 50vw, 100vw" className="absolute inset-0 h-full w-full transition duration-700 group-hover:scale-105" />
       <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
       <div className="absolute left-5 top-5 flex gap-2">
         <span className="rounded-full bg-brand px-3 py-1 text-xs font-extrabold text-navy">#{p.number}</span>
@@ -51,7 +51,7 @@ export function ProductCard({ p }) {
   return (
     <div className="group card flex flex-col overflow-hidden p-3">
       <Link to={`/products/${p.slug}`} className="relative block h-56 overflow-hidden rounded-[20px] bg-bg">
-        <Img src={p.image} alt={p.name} className="h-full w-full transition duration-500 group-hover:scale-105" />
+        <Img src={p.image} alt={p.name} sizes={SIZES.card} className="h-full w-full transition duration-500 group-hover:scale-105" />
         <span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold ${p.inStock ? 'bg-ok/90 text-white' : 'bg-white text-body'}`}>
           {p.inStock ? 'In stock' : 'On order'}
         </span>
@@ -116,7 +116,7 @@ export function BlogCard({ p }) {
   return (
     <Link to={`/blog/${p.slug}`} className="group card flex flex-col overflow-hidden p-3">
       <div className="h-56 overflow-hidden rounded-[20px]">
-        <Img src={p.image} alt={p.title} className="h-full w-full transition duration-500 group-hover:scale-105" />
+        <Img src={p.image} alt={p.title} sizes={SIZES.card} className="h-full w-full transition duration-500 group-hover:scale-105" />
       </div>
       <div className="flex flex-1 flex-col p-4">
         <p className="text-xs font-bold uppercase tracking-wider text-muted">{p.cat} · {p.date}</p>

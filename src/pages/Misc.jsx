@@ -100,7 +100,7 @@ export function BlogPost() {
         <span className="eyebrow">{p.cat}</span>
         <h1 className="mt-4 text-4xl leading-tight md:text-5xl">{p.title}</h1>
         <p className="mt-4 flex gap-5 text-sm font-semibold"><span className="flex items-center gap-1.5"><Calendar size={15} /> {p.date}</span><span className="flex items-center gap-1.5"><Clock size={15} /> {p.read}</span></p>
-        <Img src={p.image} alt={p.title} className="my-8 h-80 w-full rounded-[28px] md:h-[440px]" />
+        <Img src={p.image} alt={p.title} sizes="(min-width: 768px) 800px, 100vw" priority className="my-8 h-80 w-full rounded-[28px] md:h-[440px]" />
         <div className="prose-krc text-lg">
           {p.body.map(([tag, c], i) =>
             tag === 'h2' ? <h2 key={i}>{c}</h2> : tag === 'ul' ? <ul key={i}>{c.map((x) => <li key={x}>{x}</li>)}</ul> : <p key={i}>{c}</p>,

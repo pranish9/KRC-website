@@ -57,7 +57,7 @@ export default function Gallery({ images, title = 'Photo' }) {
       <div className="grid auto-rows-[140px] grid-cols-2 gap-2 sm:auto-rows-[180px] sm:gap-3 md:auto-rows-[200px] md:grid-cols-4">
         {images.map((src, i) => (
           <button key={i} onClick={() => setOpen(i)} className={`group relative overflow-hidden rounded-3xl ${layout[i % layout.length]}`} aria-label={`Open ${title} ${i + 1}`}>
-            <Img src={src} alt={`${title} ${i + 1}`} className="h-full w-full transition duration-500 group-hover:scale-105" />
+            <Img src={src} alt={`${title} ${i + 1}`} sizes="(min-width: 768px) 600px, 50vw" className="h-full w-full transition duration-500 group-hover:scale-105" />
             <span className="absolute inset-0 grid place-items-center bg-navy/0 opacity-0 transition group-hover:bg-navy/40 group-hover:opacity-100">
               <span className="grid h-12 w-12 place-items-center rounded-full bg-brand text-navy"><Expand size={20} /></span>
             </span>

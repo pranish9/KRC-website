@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ChevronRight } from 'lucide-react'
-import { Img } from './ui'
+import { Img, SIZES } from './ui'
 
 // Navy page header with breadcrumbs, used on every inner page.
 export default function PageHero({ eyebrow, title, text, crumbs = [], image, children }) {
@@ -9,7 +9,7 @@ export default function PageHero({ eyebrow, title, text, crumbs = [], image, chi
       <div className="relative overflow-hidden rounded-[28px] bg-navy px-5 py-10 text-white sm:px-8 sm:py-14 md:rounded-[32px] md:px-14 md:py-20">
         {image && (
           <>
-            <Img src={image} alt="" className="absolute inset-0 h-full w-full opacity-30" />
+            <Img src={image} alt="" sizes={SIZES.full} priority className="absolute inset-0 h-full w-full opacity-30" />
             <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/40" />
           </>
         )}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ChevronLeft, ChevronRight, ShieldCheck, Clock } from 'lucide-react'
-import { Button, Img } from './ui'
+import { Button, Img, SIZES } from './ui'
 import { IMG, PERSON } from '../data/images'
 import { SITE } from '../data/site'
 
@@ -41,7 +41,7 @@ export default function HeroSlider() {
     <section className="container-site pt-6" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <div className="relative overflow-hidden rounded-[28px] bg-navy md:rounded-[36px]">
         {slides.map((sl, k) => (
-          <Img key={k} src={sl.image} alt="" className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ${k === i ? 'opacity-100' : 'opacity-0'}`} />
+          <Img key={k} src={sl.image} alt="" sizes={SIZES.full} priority={k === 0} className={`absolute inset-0 h-full w-full transition-opacity duration-1000 ${k === i ? 'opacity-100' : 'opacity-0'}`} />
         ))}
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/20" />
 

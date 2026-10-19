@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { CheckCircle2, ArrowUpRight, Phone, Award, Users, Clock, ShieldCheck } from 'lucide-react'
 import HeroSlider from '../components/HeroSlider'
-import { Button, SectionHead, Img, Seo } from '../components/ui'
+import { Button, SectionHead, Img, Seo, SIZES } from '../components/ui'
 import { ServiceCard, ProjectCard, ProductCard, TestimonialCard, TechCard } from '../components/Cards'
 import FaqItem from '../components/FaqItem'
 import { CtaBand } from '../components/Layout'
@@ -34,9 +34,9 @@ export default function Home() {
         <div className="container-site grid items-center gap-12 lg:grid-cols-2">
           <div className="relative">
             <div className="grid grid-cols-5 gap-3 sm:gap-4">
-              <Img src={IMG.panelTest} alt="Engineer testing a panel" className="col-span-3 h-[300px] w-full rounded-[24px] sm:h-[440px] sm:rounded-[32px]" />
+              <Img src={IMG.panelTest} alt="Engineer testing a panel" sizes="(min-width: 1024px) 360px, 60vw" className="col-span-3 h-[300px] w-full rounded-[24px] sm:h-[440px] sm:rounded-[32px]" />
               <div className="col-span-2 flex flex-col gap-3 sm:gap-4">
-                <Img src={IMG.breakers} alt="Circuit breakers" className="h-[140px] w-full rounded-[20px] sm:h-[210px] sm:rounded-[28px]" />
+                <Img src={IMG.breakers} alt="Circuit breakers" sizes="(min-width: 1024px) 240px, 40vw" className="h-[140px] w-full rounded-[20px] sm:h-[210px] sm:rounded-[28px]" />
                 <div className="flex h-[148px] flex-col justify-end rounded-[20px] bg-navy p-4 text-white sm:h-[214px] sm:rounded-[28px] sm:p-6">
                   <p className="text-3xl font-extrabold text-brand sm:text-5xl">15+</p>
                   <p className="mt-1 text-sm font-semibold sm:text-base">Years keeping the valley powered</p>
@@ -149,7 +149,7 @@ export default function Home() {
       {/* Emergency banner */}
       <section className="container-site py-16">
         <div className="relative overflow-hidden rounded-[36px] bg-navy">
-          <Img src={IMG.powerLines} alt="" className="absolute inset-0 h-full w-full opacity-25" />
+          <Img src={IMG.powerLines} alt="" sizes={SIZES.full} className="absolute inset-0 h-full w-full opacity-25" />
           <div className="relative grid gap-8 p-6 sm:p-8 md:p-14 lg:grid-cols-2 lg:items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-danger px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white">● Emergency 24/7</span>
